@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sattardina Jewellery — Gold Rate</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LRZV32PZ05"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LRZV32PZ05');</script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow+Semi+Condensed:wght@700;800&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#07123f;color:#fff}
+:root{--acc:#9fdcff;--acc2:#2f80ff;--ink:#0a2468;--en:'Barlow Semi Condensed','Arial Narrow',sans-serif;--lab:'Barlow Condensed','Arial Narrow',sans-serif;--ar:'Cairo','Tahoma',sans-serif}
+#stage{position:fixed;width:1920px;height:1080px;left:0;top:0;transform-origin:top left;overflow:hidden;background:linear-gradient(180deg,#123a9c 0,#0a2270 55%,#050f3d 100%)}
+.track{width:3840px;height:1080px;display:flex;transition:transform 1.6s cubic-bezier(.65,0,.35,1);will-change:transform}
+.slide{transition:opacity 1.6s ease;opacity:.2;width:1920px;height:1080px;flex:0 0 1920px;display:flex;flex-direction:column;padding-bottom:20px;overflow:hidden}
+.slide.on{opacity:1}
+/* Header (no clock) */
+.header{flex:none;height:112px;padding:0 64px;display:grid;grid-template-columns:1fr 110px 1fr;gap:28px;align-items:center;background:linear-gradient(110deg,#f4f9ff,#d9e8ff 50%,#f4f9ff);border-bottom:4px solid var(--acc2)}
+.brand-en{font:800 58px/1 var(--lab);letter-spacing:3px;color:var(--ink);text-transform:uppercase}
+.brand-ar{font:800 42px/1.3 var(--ar);color:var(--ink);text-align:right}
+.logo-space{width:96px;height:96px;justify-self:center}.logo-space img{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%}
+/* Content */
+.content{flex:1;min-height:0;display:flex;flex-direction:column;gap:20px;padding:26px 58px 0}
+.karat-row{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.karat{--kp:80px;flex:0 0 495px;height:78%;border-radius:22px;border:2px solid #7fb0ff;background:linear-gradient(150deg,#fff,#dce9ff);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(0,0,0,.4);position:relative;z-index:1}
+.karat-21{--kp:102px;flex:0 0 610px;height:96%;margin:0 -26px;z-index:3}
+.karat-21,.spot-21{background:linear-gradient(150deg,#3b8cff,#0b3bb5);border:3px solid #e6f1ff;box-shadow:0 0 36px rgba(160,205,255,.6),0 26px 46px rgba(0,0,0,.65)}
+.karat-name{font:800 55px/1 var(--lab);letter-spacing:4px;color:var(--ink)}
+.karat-name-ar{font:900 49px/1.2 var(--ar);color:var(--ink)}
+.karat-21 .karat-name{font-size:68px}.karat-21 .karat-name-ar{font-size:60px}
+.karat-price{font:800 var(--kp)/1.05 var(--en);font-variant-numeric:tabular-nums;color:#07184a;margin-top:6px}
+.karat-price-ar{font:800 calc(var(--kp)*.9)/1.1 var(--ar);color:#07184a}
+.karat-unit{font:700 28px/1 var(--lab);letter-spacing:3px;color:#4a5f95;margin-top:8px}
+.karat-21 .karat-name,.karat-21 .karat-name-ar,.karat-21 .karat-price,.karat-21 .karat-price-ar,.karat-21 .karat-unit{color:#fff}
+/* Spot cards */
+.spot-row{flex:none;height:230px;display:grid;grid-template-columns:repeat(2,1fr);gap:26px;padding:0 30px}
+.spot{border-radius:22px;border:2px solid #6f9dff;background:linear-gradient(150deg,#1c4fc4,#0b2573);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.spot-label{font:700 36px/1.1 var(--lab);letter-spacing:2px;color:var(--acc);margin-bottom:8px}
+.spot-label-ar{font:700 32px/1.25 var(--ar);color:var(--acc);margin-bottom:2px}
+.spot-value{font:800 88px/1.1 var(--en);font-variant-numeric:tabular-nums;color:#fff}
+.spot-value-ar{font:800 72px/1.15 var(--ar);color:#fff}
+.spot-21 .spot-label,.spot-21 .spot-label-ar{color:#eaf4ff}
+.unit{font:700 30px/1 var(--lab);letter-spacing:3px;color:#cfe3ff;margin-top:6px}
+[dir=rtl] .unit{font-family:var(--ar);line-height:1.3;letter-spacing:0;font-size:28px}
+/* Making charges */
+.mc{flex:none;height:292px;border:2px solid #6f9dff;border-radius:22px;padding:18px 28px;background:rgba(5,15,60,.45);display:flex;flex-direction:column;justify-content:center}
+.mc-title{text-align:center;font:800 34px/1.2 var(--lab);letter-spacing:3px;color:var(--acc);padding-bottom:16px}
+.mc-title.ar{font:800 32px/1.4 var(--ar);letter-spacing:0}
+.mc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 18px}
+.mc-item{height:84px;display:flex;align-items:center;gap:12px;padding:0 20px;border-radius:14px;background:#164bbd;border:1px solid #5f8dff}
+.flag{font-size:34px}
+.mc-name{font:700 28px/1 var(--lab);letter-spacing:1px;color:#fff;white-space:nowrap}
+.mc-name-ar{font:700 26px/1 var(--ar);color:#fff;white-space:nowrap}
+.mc-value{margin-inline-start:auto;font:800 36px/1 var(--en);color:var(--acc)}
+.mc-value-ar{margin-inline-start:auto;font:800 34px/1 var(--ar);color:var(--acc)}
+.hide-mc .mc{display:none}
+.hide-mc .spot-row{height:280px}
+.hide-mc .spot-value{font-size:100px}.hide-mc .spot-value-ar{font-size:90px}
+.hide-mc .karat{--kp:112px}.hide-mc .karat-21{--kp:150px}
+.hide-mc .karat-name{font-size:72px}.hide-mc .karat-name-ar{font-size:64px}
+.hide-mc .karat-21 .karat-name{font-size:88px}.hide-mc .karat-21 .karat-name-ar{font-size:78px}
+.hide-mc .karat-unit{font-size:34px}
+/* Footer info */
+.updated,.updated-ar{flex:none;height:34px;text-align:center;font:600 26px/34px var(--lab);letter-spacing:1px;color:#cfe3ff}
+.updated-ar{font-family:var(--ar);letter-spacing:0;font-size:24px}
+/* Control bar */
+.footer{position:absolute;bottom:0;left:0;width:1920px;height:66px;background:#07123f;border-top:1px solid #2f5bd0;padding:0 58px;display:flex;align-items:center;justify-content:space-between;z-index:5;transition:transform .35s ease;transform:translateY(100%);pointer-events:none}
+body.bar .footer{transform:none;pointer-events:auto}
+.footer-left,.footer-right{display:flex;align-items:center;gap:15px}
+.dot{width:11px;height:11px;border-radius:50%;background:#1b2f78;border:1px solid #5a7ad8}.dot.active{background:var(--acc);box-shadow:0 0 10px #9fdcff88}
+.btn{height:40px;min-width:40px;padding:0 12px;border-radius:8px;border:1px solid #2f5bd0;background:#123a9c;color:var(--acc);font:700 16px var(--lab);cursor:pointer}.btn:hover{background:#1f55d6}
+.toggle{display:flex;align-items:center;gap:8px;font:700 15px var(--lab);color:#cfe3ff}.toggle input{accent-color:#2f80ff;width:18px;height:18px}
+.interval{font:700 16px var(--lab);color:#fff;min-width:62px;text-align:center}
+.zoom-label{font:600 15px var(--lab);color:#b9ceff;min-width:44px;text-align:center}
+body.fs{cursor:none}body.fs.bar{cursor:default}
+</style></head><body><div id="stage"><div class="track" id="track">
+
+<section class="slide on">
+<header class="header"><div class="brand-en">Sattardina</div><div class="logo-space"><img src="https://i.ibb.co/pBK5Zct0/file-00000000e73c7246bafe41f8ba02719e.png" alt="Logo"></div><div class="brand-ar" lang="ar" dir="rtl">مجوهرات ستاردينا</div></header>
+<main class="content" id="bodyEN">
+<div class="karat-row">
+<article class="karat"><div class="karat-name">22K</div><div class="karat-price" id="enK22">—</div><div class="karat-unit">OMR / GRAM</div></article>
+<article class="karat karat-21"><div class="karat-name">21K</div><div class="karat-price" id="enK21">—</div><div class="karat-unit">OMR / GRAM</div></article>
+<article class="karat"><div class="karat-name">18K</div><div class="karat-price" id="enK18">—</div><div class="karat-unit">OMR / GRAM</div></article>
+</div>
+<div class="spot-row">
+<article class="spot"><div class="spot-label">GOLD PER OUNCE</div><div class="spot-value" id="ozEN">—</div><div class="unit">USD</div></article>
+<article class="spot spot-21"><div class="spot-label">21K TOLA · 11.664 GM</div><div class="spot-value" id="tolaEN">—</div><div class="unit">OMR</div></article>
+</div>
+<section class="mc"><div class="mc-title">MAKING CHARGES · STARTING FROM (OMR)</div><div class="mc-grid" id="mcEN"></div></section>
+<div class="updated" id="updEN">Last updated: —</div>
+</main>
+</section>
+
+<section class="slide">
+<header class="header"><div class="brand-en">Sattardina</div><div class="logo-space"><img src="https://i.ibb.co/pBK5Zct0/file-00000000e73c7246bafe41f8ba02719e.png" alt="Logo"></div><div class="brand-ar" lang="ar" dir="rtl">مجوهرات ستاردينا</div></header>
+<main class="content" id="bodyAR">
+<div class="karat-row">
+<article class="karat"><div class="karat-name-ar">عيار ١٨</div><div class="karat-price-ar" id="arK18">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+<article class="karat karat-21"><div class="karat-name-ar">عيار ٢١</div><div class="karat-price-ar" id="arK21">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+<article class="karat"><div class="karat-name-ar">عيار ٢٢</div><div class="karat-price-ar" id="arK22">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+</div>
+<div class="spot-row" dir="rtl">
+<article class="spot"><div class="spot-label-ar">سعر أونصة الذهب</div><div class="spot-value-ar" id="ozAR">—</div><div class="unit">دولار أمريكي</div></article>
+<article class="spot spot-21"><div class="spot-label-ar">تولة عيار ٢١ · ١١.٦٦٤ جرام</div><div class="spot-value-ar" id="tolaAR">—</div><div class="unit">ر.ع</div></article>
+</div>
+<section class="mc" dir="rtl"><div class="mc-title ar">أسعار المصنعية تبدأ من (ر.ع)</div><div class="mc-grid" id="mcAR"></div></section>
+<div class="updated-ar" id="updAR">آخر تحديث: —</div>
+</main>
+</section>
+
+</div>
+<footer class="footer"><div class="footer-left"><span class="dot active" id="d0"></span><span class="dot" id="d1"></span><label class="toggle"><input type="checkbox" id="mcToggle" checked onchange="toggleMC()"> MAKING CHARGES</label><button class="btn" onclick="stepInterval(-1)">‹</button><span class="interval" id="intervalLabel">5 MIN</span><button class="btn" onclick="stepInterval(1)">›</button></div><div class="footer-right"><button class="btn" onclick="toggleFS()">⛶ FULLSCREEN</button><button class="btn" onclick="zoom(-.05)">−</button><span class="zoom-label" id="zoomLabel">100%</span><button class="btn" onclick="zoom(.05)">+</button><button class="btn" onclick="load()">↻ REFRESH</button></div></footer></div>
+
+<script>
+function toAr(n){const d=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];return String(n).replace(/[0-9]/g,x=>d[+x]);}
+/* Making charges data (edit values here) */
+const MC=[['🇴🇲','OMANI (HAND)','عُماني (يدوي)','3.500'],['🇴🇲','OMANI (MECH)','عُماني (آلي)','2.000'],['🇸🇬','SINGAPORE','سنغافوري','3.500'],['🇸🇦','SAUDI','سعودي','4.000'],['🇹🇷','TURKISH','تركي','4.500'],['🇰🇼','KUWAITI','كويتي','4.000'],['🇧🇭','BAHRAINI','بحريني','4.500'],['🇦🇪','EMIRATI','إماراتي','3.500']];
+document.getElementById('mcEN').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name">${m[1]}</span><span class="mc-value">${m[3]}</span></div>`).join('');
+document.getElementById('mcAR').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name-ar">${m[2]}</span><span class="mc-value-ar">${toAr(m[3])}</span></div>`).join('');
+let scale=1,cur=0;
+function applyZoom(){const w=innerWidth,h=innerHeight,fit=Math.min(w/1920,h/1080),s=fit*scale,el=document.getElementById('stage');el.style.transform='scale('+s+')';el.style.left=((w-1920*s)/2)+'px';el.style.top=((h-1080*s)/2)+'px';document.getElementById('zoomLabel').textContent=Math.round(scale*100)+'%';}
+function zoom(d){scale=Math.max(.5,Math.min(1.5,Math.round((scale+d)*100)/100));applyZoom()}
+addEventListener('resize',applyZoom);
+function toggleMC(){['bodyEN','bodyAR'].forEach(id=>document.getElementById(id).classList.toggle('hide-mc',!document.getElementById('mcToggle').checked));}
+function toggleFS(){if(!document.fullscreenElement){document.documentElement.requestFullscreen?.()}else{document.exitFullscreen?.()}}
+function goSlide(n){cur=n;document.getElementById('track').style.transform='translate3d('+(-1920*n)+'px,0,0)';document.querySelectorAll('.slide').forEach((el,i)=>el.classList.toggle('on',i===n));document.getElementById('d0').classList.toggle('active',n===0);document.getElementById('d1').classList.toggle('active',n===1)}
+setInterval(()=>goSlide(cur===0?1:0),25000);
+
+const modes=[{id:'live',text:'LIVE'},{id:'5',text:'5 MIN',val:5},{id:'15',text:'15 MIN',val:15},{id:'30',text:'30 MIN',val:30},{id:'60',text:'1 HR',val:60},{id:'off',text:'OFF'}];
+let modeIndex=1,fetchTimer=null,retryTimer=null,lastStamp=null; /* default: 5 MIN */
+function stepInterval(d){modeIndex=(modeIndex+d+modes.length)%modes.length;document.getElementById('intervalLabel').textContent=modes[modeIndex].text;if(fetchTimer)clearInterval(fetchTimer);fetchTimer=null;clearTimeout(retryTimer);const m=modes[modeIndex];if(m.id==='off')return;if(m.id==='live')fetchTimer=setInterval(load,60000);else fetchTimer=setInterval(load,m.val*60000);load()}
+
+function render(p){
+  /* Sattardina formulas (unchanged) */
+  const g24=(p*1.4485+15)/116.64,g22=g24*0.921,g21=g24*0.880,g18=g24*0.755,tola21=g21*11.664,f=x=>x.toFixed(3);
+  const set=(id,v)=>document.getElementById(id).textContent=v;
+  set('ozEN',p.toFixed(2));set('tolaEN',tola21.toFixed(2));
+  set('enK22',f(g22));set('enK21',f(g21));set('enK18',f(g18));
+  set('ozAR',toAr(p.toFixed(2)));set('tolaAR',toAr(tola21.toFixed(2)));
+  set('arK22',toAr(f(g22)));set('arK21',toAr(f(g21)));set('arK18',toAr(f(g18)));
+  const stamp=new Date().toLocaleString('en-US',{timeZone:'Asia/Muscat',dateStyle:'medium',timeStyle:'short'});
+  lastStamp=stamp;set('updEN','Last updated: '+stamp);set('updAR','آخر تحديث: '+toAr(stamp));
+}
+async function load(){
+  clearTimeout(retryTimer);
+  const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),10000);
+  try{
+    const r=await fetch('https://api.gold-api.com/price/XAU',{signal:ctl.signal,cache:'no-store'});
+    if(!r.ok)throw new Error('API error: '+r.status);
+    const data=await r.json();
+    if(!data.price||isNaN(data.price))throw new Error('No valid price in response');
+    render(data.price);
+  }catch(e){
+    /* Offline or API error: last price stays on screen, only the status line changes */
+    console.error(e);
+    document.getElementById('updEN').textContent=lastStamp?'Last updated: '+lastStamp+' · OFFLINE':'WAITING FOR INTERNET…';
+    document.getElementById('updAR').textContent=lastStamp?'آخر تحديث: '+toAr(lastStamp)+' · لا يوجد اتصال':'بانتظار الاتصال بالإنترنت…';
+    if(modes[modeIndex].id!=='off')retryTimer=setTimeout(load,60000);
+  }finally{clearTimeout(to)}
+}
+
+function isFS(){return !!document.fullscreenElement||(innerWidth>=screen.width-2&&innerHeight>=screen.height-2)}
+function syncFS(){document.body.classList.toggle('fs',isFS());applyZoom()}
+document.addEventListener('fullscreenchange',syncFS);addEventListener('resize',syncFS);
+function enterFS(){const r=document.documentElement.requestFullscreen?.();if(r&&r.catch)r.catch(()=>{});return r}
+function armAutoFS(){
+  const ev=['click','keydown','touchstart'];
+  const go=e=>{if(e.target.closest&&e.target.closest('.footer'))return;if(!isFS())enterFS();ev.forEach(t=>removeEventListener(t,go,true))};
+  ev.forEach(t=>addEventListener(t,go,true));
+  const r=document.documentElement.requestFullscreen?.();if(r&&r.then)r.then(()=>ev.forEach(t=>removeEventListener(t,go,true))).catch(()=>{})
+}
+/* Control bar: tap / click / any key shows it for 6 seconds, mouse at bottom edge too */
+let barTimer;
+function showBar(){document.body.classList.add('bar');clearTimeout(barTimer);barTimer=setTimeout(()=>document.body.classList.remove('bar'),6000)}
+addEventListener('keydown',showBar);addEventListener('click',showBar);addEventListener('touchstart',showBar,{passive:true});
+addEventListener('mousemove',e=>{if(e.clientY>innerHeight-110)showBar()});
+
+window.onload=()=>{toggleMC();showBar();applyZoom();stepInterval(0);syncFS();armAutoFS()};
+</script></body></html>
