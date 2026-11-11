@@ -30,3 +30,263 @@ html[data-theme="emerald"]{--page:#031a14;--bg1:#0f5a45;--bg2:#0a3f31;--bg3:#052
 .content>*+*{margin-top:20px}
 .karat-row{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
 .karat{--kp:66px;flex:0 0 495px;height:82%;border-radius:22px;border:2px solid var(--k-border);background:linear-gradient(150deg,var(--k1),var(--k2));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(0,0,0,.4);position:relative;z-index:1}
+.karat-21{--kp:84px;flex:0 0 610px;height:98%;margin:0 -26px;z-index:3}
+.karat-21,.spot-21{background:linear-gradient(150deg,var(--hl1),var(--hl2));border:3px solid var(--hl-border);box-shadow:0 0 36px var(--hl-glow),0 26px 46px rgba(0,0,0,.65)}
+.karat-name{font:800 44px/1 var(--lab);letter-spacing:4px;color:var(--k-name)}
+.karat-name-ar{font:900 40px/1.2 var(--ar);color:var(--k-name)}
+.karat-21 .karat-name{font-size:54px}.karat-21 .karat-name-ar{font-size:48px}
+.karat-price{font:800 var(--kp)/1.05 var(--en);font-variant-numeric:tabular-nums;color:var(--k-price);margin-top:6px}
+.karat-price-ar{font:800 calc(var(--kp)*.9)/1.1 var(--ar);color:var(--k-price)}
+.karat-unit{font:700 24px/1 var(--lab);letter-spacing:3px;color:var(--k-unit);margin-top:6px}
+.karat-21 .karat-name,.karat-21 .karat-name-ar,.karat-21 .karat-price,.karat-21 .karat-price-ar,.karat-21 .karat-unit{color:var(--hl-text)}
+/* Spot cards */
+.spot-row{flex:none;height:214px;display:grid;grid-template-columns:repeat(2,1fr);grid-gap:26px;gap:26px;padding:0 30px}
+.spot{border-radius:22px;border:2px solid var(--s-border);background:linear-gradient(150deg,var(--s1),var(--s2));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.spot-label{font:700 36px/1.1 var(--lab);letter-spacing:2px;color:var(--acc);margin-bottom:8px}
+.spot-label-ar{font:700 32px/1.25 var(--ar);color:var(--acc);margin-bottom:2px}
+.spot-value{font:800 88px/1.1 var(--en);font-variant-numeric:tabular-nums;color:var(--s-value)}
+.spot-value-ar{font:800 72px/1.15 var(--ar);color:var(--s-value)}
+.spot-21{background:linear-gradient(150deg,var(--s1),var(--s2));border:2px solid var(--s-border);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.spot-21 .spot-label,.spot-21 .spot-label-ar,.spot-21 .spot-value,.spot-21 .spot-value-ar,.spot-21 .unit{color:var(--s-value);text-shadow:0 2px 4px rgba(0,0,0,.35)}
+.unit{font:700 30px/1 var(--lab);letter-spacing:3px;color:var(--muted);margin-top:6px}
+[dir=rtl] .unit{font-family:var(--ar);line-height:1.3;letter-spacing:0;font-size:28px}
+/* Making charges */
+.mc{flex:none;height:322px;border:2px solid var(--mc-border);border-radius:22px;padding:18px 28px;background:var(--mc-bg);display:flex;flex-direction:column;justify-content:center}
+.mc-title{text-align:center;font:800 38px/1.2 var(--lab);letter-spacing:3px;color:var(--acc);padding-bottom:16px}
+.mc-title.ar{font:800 36px/1.4 var(--ar);letter-spacing:0}
+.mc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:16px 18px;gap:16px 18px}
+.mc-item{height:96px;display:flex;align-items:center;padding:0 20px;border-radius:14px;background:var(--mc-item);border:1px solid var(--mc-item-border)}
+.flag{font-size:40px;margin:0 12px}
+.mc-name{flex:1;font:700 30px/1 var(--lab);letter-spacing:1px;color:var(--s-value);white-space:nowrap}
+.mc-name-ar{flex:1;font:700 30px/1 var(--ar);color:var(--s-value);white-space:nowrap}
+.mc-value{padding:0 10px;font:800 42px/1 var(--en);color:var(--acc)}
+.mc-value-ar{padding:0 10px;font:800 40px/1 var(--ar);color:var(--acc)}
+.hide-mc .mc{display:none}
+.hide-mc .spot-row{height:280px}
+.hide-mc .spot-value{font-size:100px}.hide-mc .spot-value-ar{font-size:90px}
+.hide-mc .karat{--kp:112px}.hide-mc .karat-21{--kp:150px}
+.hide-mc .karat-name{font-size:72px}.hide-mc .karat-name-ar{font-size:64px}
+.hide-mc .karat-21 .karat-name{font-size:88px}.hide-mc .karat-21 .karat-name-ar{font-size:78px}
+.hide-mc .karat-unit{font-size:34px}
+/* Footer info */
+.updated,.updated-ar{flex:none;height:34px;text-align:center;font:600 26px/34px var(--lab);letter-spacing:1px;color:var(--muted)}
+.updated-ar{font-family:var(--ar);letter-spacing:0;font-size:24px}
+/* Settings popup (opens with OK) */
+.menu{position:absolute;left:0;top:0;width:1920px;height:1080px;background:rgba(0,0,0,.62);z-index:30;display:none;align-items:center;justify-content:center}
+.menu.open{display:flex}
+.menu-box{width:900px;padding:36px 44px 34px;border-radius:28px;background:var(--page);border:3px solid var(--acc);box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.icons{display:flex;justify-content:center;margin-top:22px}.icons>*+*{margin-left:34px}
+.ibtn{position:relative;width:124px;height:124px;border-radius:50%;border:3px solid var(--bar-line);background:var(--btn-bg);color:var(--acc);cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center}
+.ibtn svg{width:62px;height:62px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ibtn.on{background:var(--acc);color:var(--hl-text);border-color:var(--hl-border)}
+.ibtn.off{opacity:.5}
+.ibtn.off::after{content:"";position:absolute;width:92px;height:6px;border-radius:3px;background:var(--acc);transform:rotate(-45deg)}
+.ibtn.sel{border-color:#fff;box-shadow:0 0 0 5px var(--acc),0 0 24px var(--hl-glow)}
+.row{display:flex;align-items:center;justify-content:space-between;height:84px;padding:0 30px;margin-top:10px;border-radius:16px;border:2px solid transparent;background:rgba(255,255,255,.06);cursor:pointer}
+.row.sel{border-color:var(--acc);background:var(--btn-hover);box-shadow:0 0 18px var(--hl-glow)}
+.r-label{font:700 36px/1 var(--lab);letter-spacing:2px;color:var(--muted)}
+.r-ctrl{display:flex;align-items:center;font:800 38px/1 var(--lab);color:#fff;letter-spacing:2px}
+.r-ctrl .val{min-width:170px;text-align:center}
+.arr{display:inline-block;width:70px;text-align:center;color:var(--acc);font:800 50px/1 var(--lab)}
+body.fs{cursor:none}body.fs.menu-open{cursor:default}
+</style></head><body><div id="stage"><div class="track" id="track">
+
+<section class="slide on">
+<header class="header"><div class="brand-en">Sattardina</div><div class="logo-space"><img src="https://i.ibb.co/wF6JZgcy/1794262452760.png" alt="Logo"></div><div class="brand-ar" lang="ar" dir="rtl">مجوهرات ستاردينا</div></header>
+<main class="content" id="bodyEN">
+<div class="karat-row">
+<article class="karat"><div class="karat-name">22K</div><div class="karat-price" id="enK22">—</div><div class="karat-unit">OMR / GRAM</div></article>
+<article class="karat karat-21"><div class="karat-name">21K</div><div class="karat-price" id="enK21">—</div><div class="karat-unit">OMR / GRAM</div></article>
+<article class="karat"><div class="karat-name">18K</div><div class="karat-price" id="enK18">—</div><div class="karat-unit">OMR / GRAM</div></article>
+</div>
+<div class="spot-row">
+<article class="spot"><div class="spot-label">GOLD PER OUNCE</div><div class="spot-value" id="ozEN">—</div><div class="unit">USD</div></article>
+<article class="spot spot-21"><div class="spot-label">21K TOLA · 11.664 GM</div><div class="spot-value" id="tolaEN">—</div><div class="unit">OMR</div></article>
+</div>
+<div class="updated" id="updEN">Last updated: —</div>
+<section class="mc"><div class="mc-title">MAKING CHARGES · STARTING FROM (OMR)</div><div class="mc-grid" id="mcEN"></div></section>
+</main>
+</section>
+
+<section class="slide">
+<header class="header"><div class="brand-en">Sattardina</div><div class="logo-space"><img src="https://i.ibb.co/wF6JZgcy/1794262452760.png" alt="Logo"></div><div class="brand-ar" lang="ar" dir="rtl">مجوهرات ستاردينا</div></header>
+<main class="content" id="bodyAR">
+<div class="karat-row">
+<article class="karat"><div class="karat-name-ar">عيار ١٨</div><div class="karat-price-ar" id="arK18">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+<article class="karat karat-21"><div class="karat-name-ar">عيار ٢١</div><div class="karat-price-ar" id="arK21">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+<article class="karat"><div class="karat-name-ar">عيار ٢٢</div><div class="karat-price-ar" id="arK22">—</div><div class="karat-unit">ر.ع / جرام</div></article>
+</div>
+<div class="spot-row" dir="rtl">
+<article class="spot"><div class="spot-label-ar">سعر أونصة الذهب</div><div class="spot-value-ar" id="ozAR">—</div><div class="unit">دولار أمريكي</div></article>
+<article class="spot spot-21"><div class="spot-label-ar">تولة عيار ٢١ · ١١.٦٦٤ جرام</div><div class="spot-value-ar" id="tolaAR">—</div><div class="unit">ر.ع</div></article>
+</div>
+<div class="updated-ar" id="updAR">آخر تحديث: —</div>
+<section class="mc" dir="rtl"><div class="mc-title ar">أسعار المصنعية تبدأ من (ر.ع)</div><div class="mc-grid" id="mcAR"></div></section>
+</main>
+</section>
+
+</div>
+<div class="menu" id="menu" aria-hidden="true"><div class="menu-box">
+<div class="row" data-k="theme"><span class="r-label">THEME</span><span class="r-ctrl"><b class="arr" data-d="-1">‹</b><span class="val" id="mTheme">BROWN</span><b class="arr" data-d="1">›</b></span></div>
+<div class="row" data-k="interval"><span class="r-label">AUTO REFRESH</span><span class="r-ctrl"><b class="arr" data-d="-1">‹</b><span class="val" id="mInt">5 MIN</span><b class="arr" data-d="1">›</b></span></div>
+<div class="row" data-k="zoom"><span class="r-label">ZOOM</span><span class="r-ctrl"><b class="arr" data-d="-1">‹</b><span class="val" id="mZoom">100%</span><b class="arr" data-d="1">›</b></span></div>
+<div class="icons">
+<button class="ibtn" data-k="fs" id="iFS" title="Fullscreen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+<button class="ibtn" data-k="refresh" id="iRF" title="Refresh rates now"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button>
+<button class="ibtn" data-k="mc" id="iMC" title="Making charges"><svg viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></button>
+<button class="ibtn" data-k="close" id="iCL" title="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+</div></div>
+
+<script>
+function toAr(n){const d=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];return String(n).replace(/[0-9]/g,x=>d[+x]);}
+/* Making charges data (edit values here) */
+const MC=[['🇴🇲','OMANI (HAND)','عُماني (يدوي)','3.500'],['🇴🇲','OMANI (MECH)','عُماني (آلي)','3.000'],['🇸🇬','SINGAPORE','سنغافوري','3.500'],['🇸🇦','SAUDI','سعودي','4.000'],['🇹🇷','TURKISH','تركي','4.500'],['🇰🇼','KUWAITI','كويتي','4.000'],['🇧🇭','BAHRAINI','بحريني','4.500'],['🇦🇪','EMIRATI','إماراتي','3.500']];
+document.getElementById('mcEN').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name">${m[1]}</span><span class="mc-value">${m[3]}</span></div>`).join('');
+document.getElementById('mcAR').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name-ar">${m[2]}</span><span class="mc-value-ar">${toAr(m[3])}</span></div>`).join('');
+var THEMES=['brown','wine','emerald','black'];
+function saveTheme(t){
+  try{localStorage.setItem('sd_theme',t)}catch(e){}
+  try{document.cookie='sd_theme='+t+';max-age=31536000;path=/;SameSite=Lax'}catch(e){}
+}
+function loadTheme(){
+  var t=null;
+  try{t=localStorage.getItem('sd_theme')}catch(e){}
+  if(!t){try{var c=document.cookie.match(/(?:^|; )sd_theme=([a-z]+)/);if(c)t=c[1]}catch(e){}}
+  return t||'brown';
+}
+function setTheme(t){
+  if(THEMES.indexOf(t)<0)t='brown';
+  document.documentElement.setAttribute('data-theme',t);
+  var n=document.getElementById('mTheme');if(n)n.textContent=t.toUpperCase();
+  saveTheme(t);
+}
+function stepTheme(d){
+  var i=THEMES.indexOf(document.documentElement.getAttribute('data-theme')||'brown');if(i<0)i=0;
+  setTheme(THEMES[(i+d+THEMES.length)%THEMES.length]);
+}
+setTheme(loadTheme());
+let scale=1,cur=0;
+function applyZoom(){var w=window.innerWidth||document.documentElement.clientWidth||screen.width,h=window.innerHeight||document.documentElement.clientHeight||screen.height;if(!w||!h)return;var fit=Math.min(w/1920,h/1080),k=fit*scale,el=document.getElementById('stage');el.style.transform='scale('+k+')';el.style.left=((w-1920*k)/2)+'px';el.style.top=((h-1080*k)/2)+'px';var z=document.getElementById('mZoom');if(z)z.textContent=Math.round(scale*100)+'%';}
+function zoom(d){scale=Math.max(.5,Math.min(1.5,Math.round((scale+d)*100)/100));applyZoom()}
+addEventListener('resize',applyZoom);addEventListener('orientationchange',applyZoom);setInterval(applyZoom,3000);
+var mcOn=true;
+function toggleMC(){['bodyEN','bodyAR'].forEach(function(id){document.getElementById(id).classList.toggle('hide-mc',!mcOn)});}
+function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement||null}
+function reqFS(){var e=document.documentElement,f=e.requestFullscreen||e.webkitRequestFullscreen||e.mozRequestFullScreen||e.msRequestFullscreen;if(!f)return;try{var r=f.call(e);if(r&&r.catch)r.catch(function(){});return r}catch(x){}}
+function exitFS(){var f=document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen;if(f){try{f.call(document)}catch(x){}}}
+function toggleFS(){if(!fsEl())reqFS();else exitFS()}
+function goSlide(n){cur=n;document.getElementById('track').style.transform='translate3d('+(-1920*n)+'px,0,0)';document.querySelectorAll('.slide').forEach((el,i)=>el.classList.toggle('on',i===n))}
+setInterval(()=>goSlide(cur===0?1:0),30000);
+
+const modes=[{id:'live',text:'LIVE'},{id:'5',text:'5 MIN',val:5},{id:'15',text:'15 MIN',val:15},{id:'30',text:'30 MIN',val:30},{id:'60',text:'1 HR',val:60},{id:'off',text:'OFF'}];
+let modeIndex=1,fetchTimer=null,retryTimer=null,lastStamp=null; /* default: 5 MIN */
+function stepInterval(d){modeIndex=(modeIndex+d+modes.length)%modes.length;var il=document.getElementById('mInt');if(il)il.textContent=modes[modeIndex].text;if(fetchTimer)clearInterval(fetchTimer);fetchTimer=null;clearTimeout(retryTimer);const m=modes[modeIndex];if(m.id==='off')return;if(m.id==='live')fetchTimer=setInterval(load,60000);else fetchTimer=setInterval(load,m.val*60000);load()}
+
+function render(p){
+  /* Sattardina formulas (unchanged) */
+  const g24=(p*1.4485+15)/116.64,g22=g24*0.921,g21=g24*0.880,g18=g24*0.755,tola21=g21*11.664,f=x=>x.toFixed(3);
+  const set=(id,v)=>document.getElementById(id).textContent=v;
+  set('ozEN',p.toFixed(2));set('tolaEN',tola21.toFixed(2));
+  set('enK22',f(g22));set('enK21',f(g21));set('enK18',f(g18));
+  set('ozAR',toAr(p.toFixed(2)));set('tolaAR',toAr(tola21.toFixed(2)));
+  set('arK22',toAr(f(g22)));set('arK21',toAr(f(g21)));set('arK18',toAr(f(g18)));
+  const stamp=new Date().toLocaleString('en-US',{timeZone:'Asia/Muscat',year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+  lastStamp=stamp;set('updEN','Last updated: '+stamp);set('updAR','آخر تحديث: '+toAr(stamp));
+}
+function load(){
+  clearTimeout(retryTimer);
+  var done=false,x=new XMLHttpRequest();
+  function fail(e){
+    if(done)return;done=true;
+    /* Offline or API error: last price stays on screen, only the status line changes */
+    console.error(e);
+    document.getElementById('updEN').textContent=lastStamp?'Last updated: '+lastStamp+' · OFFLINE':'WAITING FOR INTERNET…';
+    document.getElementById('updAR').textContent=lastStamp?'آخر تحديث: '+toAr(lastStamp)+' · لا يوجد اتصال':'بانتظار الاتصال بالإنترنت…';
+    if(modes[modeIndex].id!=='off')retryTimer=setTimeout(load,60000);
+  }
+  try{
+    x.open('GET','https://api.gold-api.com/price/XAU',true);
+    x.timeout=10000;
+    x.onload=function(){
+      if(done)return;
+      if(x.status<200||x.status>=300)return fail('API error: '+x.status);
+      var d;try{d=JSON.parse(x.responseText)}catch(e){return fail(e)}
+      if(!d.price||isNaN(d.price))return fail('No valid price in response');
+      done=true;render(+d.price);
+    };
+    x.onerror=function(){fail('network error')};
+    x.ontimeout=function(){fail('timeout')};
+    x.send();
+  }catch(e){fail(e)}
+}
+
+function isFS(){return !!fsEl()||(innerWidth>=screen.width-2&&innerHeight>=screen.height-2)}
+function syncFS(){document.body.classList.toggle('fs',isFS());applyZoom()}
+document.addEventListener('fullscreenchange',syncFS);document.addEventListener('webkitfullscreenchange',syncFS);addEventListener('resize',syncFS);
+function armAutoFS(){
+  var ev=['click','keydown','touchstart'];
+  var go=function(e){if(e.target.closest&&e.target.closest('.menu'))return;if(!isFS())reqFS();ev.forEach(function(t){removeEventListener(t,go,true)})};
+  ev.forEach(function(t){addEventListener(t,go,true)});
+  var r=reqFS();if(r&&r.then)r.then(function(){ev.forEach(function(t){removeEventListener(t,go,true)})}).catch(function(){})
+}
+/* Settings popup: OK / Enter opens it, arrows choose and change, BACK closes */
+var menuOpen=false,zone='list',ti=0,li=0,menuTimer=null;
+function menuRows(){return document.querySelectorAll('#menu .row')}
+function menuIcons(){return document.querySelectorAll('#menu .ibtn')}
+function updateMenu(){
+  var ic=menuIcons(),i;
+  for(i=0;i<ic.length;i++){
+    var k=ic[i].getAttribute('data-k'),b=ic[i];
+    b.classList.remove('on','off','sel');
+    if(k==='fs'&&isFS())b.classList.add('on');
+    if(k==='mc'){if(mcOn)b.classList.add('on');else b.classList.add('off')}
+    if(zone==='top'&&i===ti)b.classList.add('sel');
+  }
+  var rows=menuRows();
+  for(i=0;i<rows.length;i++){if(zone==='list'&&i===li)rows[i].classList.add('sel');else rows[i].classList.remove('sel')}
+}
+function menuTick(){clearTimeout(menuTimer);menuTimer=setTimeout(closeMenu,30000)}
+function openMenu(){menuOpen=true;zone='top';li=0;ti=0;var ic=menuIcons();for(var q=0;q<ic.length;q++){if(ic[q].getAttribute('data-k')==='refresh')ti=q}document.getElementById('menu').classList.add('open');document.body.classList.add('menu-open');updateMenu();menuTick()}
+function closeMenu(){menuOpen=false;clearTimeout(menuTimer);document.getElementById('menu').classList.remove('open');document.body.classList.remove('menu-open')}
+function menuAction(k,d){
+  if(k==='theme')stepTheme(d||1);
+  else if(k==='mc'){mcOn=!mcOn;toggleMC()}
+  else if(k==='interval')stepInterval(d||1);
+  else if(k==='zoom')zoom(d<0?-.05:.05);
+  else if(k==='fs')toggleFS();
+  else if(k==='refresh'){load();closeMenu();return}
+  else if(k==='close'){closeMenu();return}
+  updateMenu();menuTick();
+}
+document.addEventListener('keydown',function(e){
+  var k=e.key,c=e.keyCode;
+  var ok=(k==='Enter'||k==='Select'||c===13||c===23);
+  if(ok&&e.repeat){e.preventDefault();return}
+  if(!menuOpen){if(ok){openMenu();e.preventDefault()}return}
+  var rows=menuRows(),n=rows.length,ic=menuIcons(),m=ic.length;
+  if(k==='ArrowUp'||c===38){if(zone==='top'){zone='list';li=n-1}else if(li>0)li--;else zone='top'}
+  else if(k==='ArrowDown'||c===40){if(zone==='top'){zone='list';li=0}else if(li<n-1)li++;else zone='top'}
+  else if(k==='ArrowLeft'||c===37){if(zone==='top')ti=(ti+m-1)%m;else menuAction(rows[li].getAttribute('data-k'),-1)}
+  else if(k==='ArrowRight'||c===39){if(zone==='top')ti=(ti+1)%m;else menuAction(rows[li].getAttribute('data-k'),1)}
+  else if(ok){menuAction(zone==='top'?ic[ti].getAttribute('data-k'):rows[li].getAttribute('data-k'),0)}
+  else if(k==='Escape'||k==='Backspace'||k==='GoBack'||c===27||c===8||c===4)closeMenu();
+  else return;
+  if(menuOpen){updateMenu();menuTick()}e.preventDefault();
+},true);
+/* Touch / mouse: tap the screen to open; tap an icon or a row (or its arrows) to use it; tap outside to close */
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(!menuOpen){openMenu();return}
+  var ib=t.closest?t.closest('.ibtn'):null;
+  if(ib){var ic=menuIcons();for(var j=0;j<ic.length;j++){if(ic[j]===ib){zone='top';ti=j}}menuAction(ib.getAttribute('data-k'),0);return}
+  var row=t.closest?t.closest('.row'):null;
+  if(row){
+    var rows=menuRows();for(var i=0;i<rows.length;i++){if(rows[i]===row){zone='list';li=i}}
+    var d=t.getAttribute&&t.getAttribute('data-d');
+    menuAction(row.getAttribute('data-k'),d?parseInt(d,10):0);
+  }else if(!(t.closest&&t.closest('.menu-box')))closeMenu();
+});
+
+window.onload=function(){toggleMC();applyZoom();stepInterval(0);syncFS();armAutoFS();setTimeout(applyZoom,300);setTimeout(applyZoom,1500);setTimeout(applyZoom,4000)};
+</script></body></html>
