@@ -21,10 +21,10 @@ html[data-theme="emerald"]{--page:#031a14;--bg1:#0f5a45;--bg2:#0a3f31;--bg3:#052
 .slide{transition:opacity 1.6s ease;opacity:.2;width:1920px;height:1080px;flex:0 0 1920px;display:flex;flex-direction:column;padding-bottom:20px;overflow:hidden}
 .slide.on{opacity:1}
 /* Header (no clock) */
-.header{flex:none;height:138px;padding:0 64px;display:grid;grid-template-columns:1fr 150px 1fr;grid-gap:28px;gap:28px;align-items:center;background:linear-gradient(110deg,var(--h1),var(--h2) 50%,var(--h1));border-bottom:4px solid var(--acc2)}
+.header{flex:none;height:122px;padding:0 64px;display:grid;grid-template-columns:1fr 134px 1fr;grid-gap:28px;gap:28px;align-items:center;background:linear-gradient(110deg,var(--h1),var(--h2) 50%,var(--h1));border-bottom:4px solid var(--acc2)}
 .brand-en{font:800 58px/1 var(--lab);letter-spacing:3px;color:var(--hdr-en);text-transform:uppercase}
 .brand-ar{font:800 42px/1.3 var(--ar);color:var(--hdr-ar);text-align:right}
-.logo-space{width:130px;height:130px;justify-self:center;align-self:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--logo1),var(--logo2));border:4px solid var(--logo-ring);box-shadow:0 4px 14px rgba(0,0,0,.35);padding:4px;overflow:hidden}.logo-space img{width:100%;height:100%;object-fit:contain;display:block}
+.logo-space{width:114px;height:114px;justify-self:center;align-self:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--logo1),var(--logo2));border:4px solid var(--logo-ring);box-shadow:0 4px 14px rgba(0,0,0,.35);padding:4px;overflow:hidden}.logo-space img{width:100%;height:100%;object-fit:contain;display:block}
 /* Content */
 .content{flex:1;min-height:0;display:flex;flex-direction:column;padding:26px 58px 0}
 .content>*+*{margin-top:20px}
@@ -69,8 +69,8 @@ html[data-theme="emerald"]{--page:#031a14;--bg1:#0f5a45;--bg2:#0a3f31;--bg3:#052
 .hide-mc .karat-21 .karat-name{font-size:88px}.hide-mc .karat-21 .karat-name-ar{font-size:78px}
 .hide-mc .karat-unit{font-size:34px}
 /* Footer info */
-.updated,.updated-ar{flex:none;height:34px;text-align:center;font:600 26px/34px var(--lab);letter-spacing:1px;color:var(--muted)}
-.updated-ar{font-family:var(--ar);letter-spacing:0;font-size:24px}
+.updated,.updated-ar{flex:none;height:46px;text-align:center;font:600 36px/46px var(--lab);letter-spacing:1px;color:var(--muted)}
+.updated-ar{font-family:var(--ar);letter-spacing:0;font-size:32px}
 /* Settings popup (opens with OK) */
 .menu{position:absolute;left:0;top:0;width:1920px;height:1080px;background:rgba(0,0,0,.62);z-index:30;display:none;align-items:center;justify-content:center}
 .menu.open{display:flex}
@@ -144,6 +144,16 @@ function toAr(n){const d=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];ret
 const MC=[['🇴🇲','OMANI (HAND)','عُماني (يدوي)','3.500'],['🇴🇲','OMANI (MECH)','عُماني (آلي)','3.000'],['🇸🇬','SINGAPORE','سنغافوري','3.500'],['🇸🇦','SAUDI','سعودي','4.000'],['🇹🇷','TURKISH','تركي','4.500'],['🇰🇼','KUWAITI','كويتي','4.000'],['🇧🇭','BAHRAINI','بحريني','4.500'],['🇦🇪','EMIRATI','إماراتي','3.500']];
 document.getElementById('mcEN').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name">${m[1]}</span><span class="mc-value">${m[3]}</span></div>`).join('');
 document.getElementById('mcAR').innerHTML=MC.map(m=>`<div class="mc-item"><span class="flag">${m[0]}</span><span class="mc-name-ar">${m[2]}</span><span class="mc-value-ar">${toAr(m[3])}</span></div>`).join('');
+function saveSet(k,v){
+  try{localStorage.setItem(k,v)}catch(e){}
+  try{document.cookie=k+'='+v+';max-age=31536000;path=/;SameSite=Lax'}catch(e){}
+}
+function loadSet(k,def){
+  var v=null;
+  try{v=localStorage.getItem(k)}catch(e){}
+  if(v===null||v===undefined){try{var c=document.cookie.match(new RegExp('(?:^|; )'+k+'=([^;]*)'));if(c)v=c[1]}catch(e){}}
+  return(v===null||v===undefined)?def:v;
+}
 var THEMES=['brown','wine','emerald','black'];
 function saveTheme(t){
   try{localStorage.setItem('sd_theme',t)}catch(e){}
@@ -166,11 +176,11 @@ function stepTheme(d){
   setTheme(THEMES[(i+d+THEMES.length)%THEMES.length]);
 }
 setTheme(loadTheme());
-let scale=1,cur=0;
+let scale=(function(){var v=parseFloat(loadSet('sd_zoom','1'));return(v>=.5&&v<=1.5)?v:1})(),cur=0;
 function applyZoom(){var w=window.innerWidth||document.documentElement.clientWidth||screen.width,h=window.innerHeight||document.documentElement.clientHeight||screen.height;if(!w||!h)return;var fit=Math.min(w/1920,h/1080),k=fit*scale,el=document.getElementById('stage');el.style.transform='scale('+k+')';el.style.left=((w-1920*k)/2)+'px';el.style.top=((h-1080*k)/2)+'px';var z=document.getElementById('mZoom');if(z)z.textContent=Math.round(scale*100)+'%';}
-function zoom(d){scale=Math.max(.5,Math.min(1.5,Math.round((scale+d)*100)/100));applyZoom()}
+function zoom(d){scale=Math.max(.5,Math.min(1.5,Math.round((scale+d)*100)/100));saveSet('sd_zoom',scale);applyZoom()}
 addEventListener('resize',applyZoom);addEventListener('orientationchange',applyZoom);setInterval(applyZoom,3000);
-var mcOn=true;
+var mcOn=loadSet('sd_mc','1')!=='0';
 function toggleMC(){['bodyEN','bodyAR'].forEach(function(id){document.getElementById(id).classList.toggle('hide-mc',!mcOn)});}
 function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement||null}
 function reqFS(){var e=document.documentElement,f=e.requestFullscreen||e.webkitRequestFullscreen||e.mozRequestFullScreen||e.msRequestFullscreen;if(!f)return;try{var r=f.call(e);if(r&&r.catch)r.catch(function(){});return r}catch(x){}}
@@ -180,8 +190,8 @@ function goSlide(n){cur=n;document.getElementById('track').style.transform='tran
 setInterval(()=>goSlide(cur===0?1:0),30000);
 
 const modes=[{id:'live',text:'LIVE'},{id:'5',text:'5 MIN',val:5},{id:'15',text:'15 MIN',val:15},{id:'30',text:'30 MIN',val:30},{id:'60',text:'1 HR',val:60},{id:'off',text:'OFF'}];
-let modeIndex=1,fetchTimer=null,retryTimer=null,lastStamp=null; /* default: 5 MIN */
-function stepInterval(d){modeIndex=(modeIndex+d+modes.length)%modes.length;var il=document.getElementById('mInt');if(il)il.textContent=modes[modeIndex].text;if(fetchTimer)clearInterval(fetchTimer);fetchTimer=null;clearTimeout(retryTimer);const m=modes[modeIndex];if(m.id==='off')return;if(m.id==='live')fetchTimer=setInterval(load,60000);else fetchTimer=setInterval(load,m.val*60000);load()}
+let modeIndex=(function(){var v=parseInt(loadSet('sd_int','1'),10);return(v>=0&&v<modes.length)?v:1})(),fetchTimer=null,retryTimer=null,lastStamp=null; /* default: 5 MIN */
+function stepInterval(d){modeIndex=(modeIndex+d+modes.length)%modes.length;saveSet('sd_int',modeIndex);var il=document.getElementById('mInt');if(il)il.textContent=modes[modeIndex].text;if(fetchTimer)clearInterval(fetchTimer);fetchTimer=null;clearTimeout(retryTimer);const m=modes[modeIndex];if(m.id==='off')return;if(m.id==='live')fetchTimer=setInterval(load,60000);else fetchTimer=setInterval(load,m.val*60000);load()}
 
 function render(p){
   /* Sattardina formulas (unchanged) */
@@ -194,32 +204,36 @@ function render(p){
   const stamp=new Date().toLocaleString('en-US',{timeZone:'Asia/Muscat',year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
   lastStamp=stamp;set('updEN','Last updated: '+stamp);set('updAR','آخر تحديث: '+toAr(stamp));
 }
+var fails=0;
 function load(){
   clearTimeout(retryTimer);
   var done=false,x=new XMLHttpRequest();
-  function fail(e){
+  function fail(why){
     if(done)return;done=true;
-    /* Offline or API error: last price stays on screen, only the status line changes */
-    console.error(e);
-    document.getElementById('updEN').textContent=lastStamp?'Last updated: '+lastStamp+' · OFFLINE':'WAITING FOR INTERNET…';
-    document.getElementById('updAR').textContent=lastStamp?'آخر تحديث: '+toAr(lastStamp)+' · لا يوجد اتصال':'بانتظار الاتصال بالإنترنت…';
-    if(modes[modeIndex].id!=='off')retryTimer=setTimeout(load,60000);
+    fails++;console.error('rate load failed:',why);
+    /* Short hiccups are hidden: OFFLINE is shown only after 3 failed tries in a row (last price stays on screen) */
+    if(fails>=3){
+      document.getElementById('updEN').textContent=lastStamp?'Last updated: '+lastStamp+' · OFFLINE ('+why+')':'WAITING FOR INTERNET… ('+why+')';
+      document.getElementById('updAR').textContent=lastStamp?'آخر تحديث: '+toAr(lastStamp)+' · لا يوجد اتصال':'بانتظار الاتصال بالإنترنت…';
+    }
+    if(modes[modeIndex].id!=='off')retryTimer=setTimeout(load,fails<3?15000:60000);
   }
   try{
     x.open('GET','https://api.gold-api.com/price/XAU',true);
-    x.timeout=10000;
+    x.timeout=15000;
     x.onload=function(){
       if(done)return;
-      if(x.status<200||x.status>=300)return fail('API error: '+x.status);
-      var d;try{d=JSON.parse(x.responseText)}catch(e){return fail(e)}
-      if(!d.price||isNaN(d.price))return fail('No valid price in response');
-      done=true;render(+d.price);
+      if(x.status<200||x.status>=300)return fail('HTTP '+x.status);
+      var d;try{d=JSON.parse(x.responseText)}catch(e){return fail('bad data')}
+      if(!d.price||isNaN(d.price))return fail('bad data');
+      done=true;fails=0;render(+d.price);
     };
-    x.onerror=function(){fail('network error')};
+    x.onerror=function(){fail('network')};
     x.ontimeout=function(){fail('timeout')};
     x.send();
-  }catch(e){fail(e)}
+  }catch(e){fail('error')}
 }
+addEventListener('online',function(){load()});
 
 function isFS(){return !!fsEl()||(innerWidth>=screen.width-2&&innerHeight>=screen.height-2)}
 function syncFS(){document.body.classList.toggle('fs',isFS());applyZoom()}
@@ -251,7 +265,7 @@ function openMenu(){menuOpen=true;zone='top';li=0;ti=0;var ic=menuIcons();for(va
 function closeMenu(){menuOpen=false;clearTimeout(menuTimer);document.getElementById('menu').classList.remove('open');document.body.classList.remove('menu-open')}
 function menuAction(k,d){
   if(k==='theme')stepTheme(d||1);
-  else if(k==='mc'){mcOn=!mcOn;toggleMC()}
+  else if(k==='mc'){mcOn=!mcOn;saveSet('sd_mc',mcOn?'1':'0');toggleMC()}
   else if(k==='interval')stepInterval(d||1);
   else if(k==='zoom')zoom(d<0?-.05:.05);
   else if(k==='fs')toggleFS();
